@@ -1,0 +1,57 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:ctrl="clr-namespace:ZumtenSoft.WebsiteCrawler.Controls.ListViewLayout"
+        xmlns:models="clr-namespace:ZumtenSoft.WebsiteCrawler.Models"
+        xmlns:resources="clr-namespace:ZumtenSoft.WebsiteCrawler.Resources"
+        xmlns:controls="clr-namespace:ZumtenSoft.WebsiteCrawler.Controls"
+        x:Class="ZumtenSoft.WebsiteCrawler.Views.Editors.CrawlingConfigCollectionEditor"
+        mc:Ignorable="d" d:DataContext="{x:Static models:DesignTimeModels.ProcessingConfigurationCollection}"
+        Title="Crawling configurations" Height="337" Width="658" MinWidth="350" MinHeight="200"
+        ShowInTaskbar="False" x:Name="Window">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <ListView Name="lstConfigurations" ItemsSource="{Binding}" ctrl:ListViewLayoutManager.Enabled="True" Grid.ColumnSpan="4">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Actions" ctrl:FixedColumn.Width="95">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <controls:ImageButton x:Name="btnMoveUp" Image="{x:Static resources:BitmapIcons.MoveUp}" Width="20" Height="20" ToolTip="Move up" Click="BtnMoveUp_CLick" />
+                                    <controls:ImageButton x:Name="btnMoveDown" Image="{x:Static resources:BitmapIcons.MoveDown}" Width="20" Height="20" ToolTip="Move down" Click="BtnMoveDown_Click" />
+                                    <controls:ImageButton x:Name="btnEdit" Image="{x:Static resources:BitmapIcons.Edit}" Width="20" Height="20" ToolTip="Edit" Click="BtnEdit_Click" />
+                                    <controls:ImageButton x:Name="btnDelete" Image="{x:Static resources:BitmapIcons.Delete}" Width="20" Height="20" ToolTip="Delete" Click="BtnDelete_Click" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=Name}" ctrl:ProportionalColumn.Width="1" />
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Button Grid.Row="1" Grid.Column="0" Margin="3" Click="BtnAdd_Click">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="{x:Static resources:BitmapIcons.Add}" Height="16"></Image>
+                <TextBlock Text="Add" Height="16" Margin="3,0"></TextBlock>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Row="1" Grid.Column="2" Margin="3" Click="BtnOK_Click" IsDefault="True">OK</Button>
+        <Button Grid.Row="1" Grid.Column="3" Margin="3" Click="BtnCancel_Click" IsCancel="True">Cancel</Button>
+    </Grid>
+</Window>

@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C1A65DB1-1A4B-4680-B451-47F3972C5D12}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ZumtenSoft.WebsiteCrawler</RootNamespace>
+    <AssemblyName>ZumtenSoft.WebsiteCrawler</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Icons\Application.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EPPlus, Version=4.5.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.1\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="PresentationFramework.Classic" />
+    <Reference Include="PresentationFramework.Luna" />
+    <Reference Include="PresentationFramework.Royale" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="ZumtenSoft.Linq2ObsCollection, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZumtenSoft.Linq2ObsCollection.1.0.1\lib\net46\ZumtenSoft.Linq2ObsCollection.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Controls\ListViewLayout\ConverterGridViewColumn.cs" />
+    <Compile Include="Controls\ListViewLayout\FixedColumn.cs" />
+    <Compile Include="Controls\ListViewLayout\ImageGridViewColumn.cs" />
+    <Compile Include="Controls\ListViewLayout\LayoutColumn.cs" />
+    <Compile Include="Controls\ListViewLayout\ListViewLayoutManager.cs" />
+    <Compile Include="Controls\ListViewLayout\ProportionalColumn.cs" />
+    <Compile Include="Controls\ListViewLayout\RangeColumn.cs" />
+    <Compile Include="Controls\MaskedTextBox.cs" />
+    <Compile Include="Controls\TreeListView\LevelToIndentConverter.cs" />
+    <Compile Include="Controls\TreeListView\TreeListView.cs" />
+    <Compile Include="Resources\Converters\IPAddressToStringConverter.cs" />
+    <Compile Include="Resources\Validators\IPAddressValidationRule.cs" />
+    <Compile Include="Utils\EnumerationExtensions.cs" />
+    <Compile Include="Utils\ErrorProvider.cs" />
+    <Compile Include="Views\Editors\CrawlingBucketEditor.xaml.cs">
+      <DependentUpon>CrawlingBucketEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Editors\CrawlingRuleEditor.xaml.cs">
+      <DependentUpon>CrawlingRuleEditor.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\FileView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Editors\CrawlingBucketCollectionEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Editors\CrawlingRuleCollectionEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Editors\CrawlingStartingUrlCollectionEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Editors\CrawlingBucketEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Editors\CrawlingConfigCollectionEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Editors\CrawlingConfigEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Editors\ReportConfigCollectionEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Editors\ReportConfigEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Windows\ImportUrlsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Windows\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\DesignTimeModels.cs" />
+    <Compile Include="Models\MainViewModel.cs" />
+    <Compile Include="Models\Node.cs" />
+    <Compile Include="Resources\BitmapIcons.cs" />
+    <Compile Include="Resources\Converters\EnumConverter.cs" />
+    <Compile Include="Resources\Converters\UriToStringConverter.cs" />
+    <Compile Include="Resources\MenuCommands.cs" />
+    <Compile Include="Resources\Validators\UriValidationRule.cs" />
+    <Compile Include="Utils\DependencyObjectHelper.cs" />
+    <Compile Include="Resources\Effects\GrayscaleEffect.cs" />
+    <Compile Include="Controls\CommandMenuItem.cs" />
+    <Compile Include="Views\Controls\FileView.xaml.cs">
+      <DependentUpon>FileView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ImageButton.cs" />
+    <Compile Include="Views\Editors\CrawlingBucketCollectionEditor.xaml.cs">
+      <DependentUpon>CrawlingBucketCollectionEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Editors\CrawlingRuleCollectionEditor.xaml.cs">
+      <DependentUpon>CrawlingRuleCollectionEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Editors\CrawlingStartingUrlCollectionEditor.xaml.cs">
+      <DependentUpon>CrawlingStartingUrlCollectionEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Editors\CrawlingConfigCollectionEditor.xaml.cs">
+      <DependentUpon>CrawlingConfigCollectionEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Editors\CrawlingConfigEditor.xaml.cs">
+      <DependentUpon>CrawlingConfigEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Editors\ReportConfigCollectionEditor.xaml.cs">
+      <DependentUpon>ReportConfigCollectionEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Editors\ReportConfigEditor.xaml.cs">
+      <DependentUpon>ReportConfigEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\ImportUrlsWindow.xaml.cs">
+      <DependentUpon>ImportUrlsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Views\Editors\CrawlingRuleEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\FileViewModel.cs" />
+    <Compile Include="Models\ResourceViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <Resource Include="Resources\Effects\GrayscaleEffect.ps" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ZumtenSoft.WebsiteCrawler.Utils\ZumtenSoft.WebsiteCrawler.Utils.csproj">
+      <Project>{A1EEF449-D880-43C1-A0B0-F2A2DBA76F11}</Project>
+      <Name>ZumtenSoft.WebsiteCrawler.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZumtenSoft.WebsiteCrawler.BusLayer\ZumtenSoft.WebsiteCrawler.BusLayer.csproj">
+      <Project>{B7F841CA-2724-470C-9E72-1214136E1A7D}</Project>
+      <Name>ZumtenSoft.WebsiteCrawler.BusLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Application.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Actions\New.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Actions\Browse.png" />
+    <Resource Include="Resources\Icons\Actions\Close.png" />
+    <Resource Include="Resources\Icons\Actions\Delete.png" />
+    <Resource Include="Resources\Icons\Actions\Open.png" />
+    <Resource Include="Resources\Icons\Actions\Redo.png" />
+    <Resource Include="Resources\Icons\Actions\Refresh.png" />
+    <Resource Include="Resources\Icons\Actions\Save.png" />
+    <Resource Include="Resources\Icons\Actions\Undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Actions\Edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Actions\Add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Effects\GrayscaleEffect.fx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Actions\ControlPause.png" />
+    <Resource Include="Resources\Icons\Actions\ControlPlay.png" />
+    <Resource Include="Resources\Icons\Actions\ControlStop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Elements\FileExcel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Status\Accept.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Status\Warning.png" />
+    <Resource Include="Resources\Icons\Status\Error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Status\Working.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Status\Processing.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Status\Redirect.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Elements\Folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Elements\DomainName.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Status\Waiting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Status\Ignored.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Actions\MoveDown.png" />
+    <Resource Include="Resources\Icons\Actions\MoveUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="CrawlingConfigs.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ReportConfigs.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

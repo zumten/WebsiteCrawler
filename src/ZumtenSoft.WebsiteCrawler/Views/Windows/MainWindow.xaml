@@ -1,0 +1,94 @@
+﻿<Window x:Class="ZumtenSoft.WebsiteCrawler.Views.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:models="clr-namespace:ZumtenSoft.WebsiteCrawler.Models"
+        xmlns:effect="clr-namespace:ZumtenSoft.WebsiteCrawler.Resources.Effects"
+        xmlns:converters="clr-namespace:ZumtenSoft.WebsiteCrawler.Resources.Converters"
+        xmlns:controls="clr-namespace:ZumtenSoft.WebsiteCrawler.Controls"
+        xmlns:resources="clr-namespace:ZumtenSoft.WebsiteCrawler.Resources"
+        xmlns:views="clr-namespace:ZumtenSoft.WebsiteCrawler.Views.Controls"
+        mc:Ignorable="d" d:DataContext="{x:Static models:DesignTimeModels.MainViewModel}"
+        Title="Website Crawler" Icon="{x:Static resources:BitmapIcons.Application}"
+        Height="440" Width="737">
+
+    <Window.Resources>
+        <converters:EnumConverter x:Key="EnumConverter" />
+
+
+    </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="resources:MenuCommands.FileExit" Executed="FileExit_Executed"></CommandBinding>
+        <CommandBinding Command="resources:MenuCommands.FileNew" Executed="FileNew_Executed"></CommandBinding>
+        <CommandBinding Command="resources:MenuCommands.FileClose" Executed="FileClose_Executed" CanExecute="FileAction_CanExecute"></CommandBinding>
+        <CommandBinding Command="resources:MenuCommands.FileOpen" Executed="FileOpen_Executed"></CommandBinding>
+        <CommandBinding Command="resources:MenuCommands.FileSave" Executed="FileSave_Executed" CanExecute="FileAction_CanExecute"></CommandBinding>
+        <CommandBinding Command="resources:MenuCommands.FileSaveAs" Executed="FileSaveAs_Executed" CanExecute="FileAction_CanExecute"></CommandBinding>
+        <CommandBinding Command="resources:MenuCommands.CrawlingPlay" Executed="CrawlingPlay_Executed" CanExecute="FileAction_CanExecute"></CommandBinding>
+        <CommandBinding Command="resources:MenuCommands.CrawlingStop" Executed="CrawlingStop_Executed" CanExecute="CrawlingStop_CanExecute"></CommandBinding>
+        <CommandBinding Command="resources:MenuCommands.ReportingGenerate" Executed="ReportingGenerate_Executed" CanExecute="FileAction_CanExecute"></CommandBinding>
+        <CommandBinding Command="resources:MenuCommands.EditCrawlingConfigs" Executed="EditCrawlingConfigs_Executed"></CommandBinding>
+        <CommandBinding Command="resources:MenuCommands.EditReportConfigs" Executed="EditReportConfigs_Executed"></CommandBinding>
+        <CommandBinding Command="resources:MenuCommands.ImportUrls" Executed="ImportUrls_Executed" CanExecute="FileAction_CanExecute"></CommandBinding>
+    </Window.CommandBindings>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="File">
+                <controls:CommandMenuItem Command="resources:MenuCommands.FileNew" />
+                <controls:CommandMenuItem Command="resources:MenuCommands.FileOpen" />
+                <controls:CommandMenuItem Command="resources:MenuCommands.FileClose" />
+                <controls:CommandMenuItem Command="resources:MenuCommands.FileSave" />
+                <controls:CommandMenuItem Command="resources:MenuCommands.FileSaveAs" />
+                <Separator />
+                <controls:CommandMenuItem Command="resources:MenuCommands.FileExit" />
+            </MenuItem>
+            <MenuItem Header="Edit">
+                <controls:CommandMenuItem Command="resources:MenuCommands.EditCrawlingConfigs" />
+                <!--<controls:CommandMenuItem Command="resources:MenuCommands.EditReportConfigs" />-->
+                <controls:CommandMenuItem Command="resources:MenuCommands.ImportUrls" />
+            </MenuItem>
+        </Menu>
+
+        <ToolBar DockPanel.Dock="Top">
+            <controls:CommandButton Command="resources:MenuCommands.FileNew" />
+            <controls:CommandButton Command="resources:MenuCommands.FileOpen" />
+            <controls:CommandButton Command="resources:MenuCommands.FileSave" />
+            <Separator />
+            <ComboBox SelectedItem="{Binding Path=SelectedConfig, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=CrawlingConfigs}" DisplayMemberPath="Name" Width="200" />
+            <controls:CommandButton Command="resources:MenuCommands.CrawlingPlay" />
+            <controls:CommandButton Command="resources:MenuCommands.CrawlingStop" />
+            <Separator />
+            <controls:CommandButton Command="resources:MenuCommands.ReportingGenerate" />
+        </ToolBar>
+  
+        <TabControl ItemsSource="{Binding Path=Files}" SelectedItem="{Binding Path=SelectedFile}">
+            <TabControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=Name}" />
+                        <Button Style="{StaticResource CloseButtonStyle}" Click="FileClose_Executed" />
+                    </StackPanel>
+                </DataTemplate>
+            </TabControl.ItemTemplate>
+            <TabControl.ContentTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        
+                        <TextBlock Text="Status: " HorizontalAlignment="Right" />
+                        <TextBlock Text="{Binding Path=Status, Converter={StaticResource EnumConverter}}" Grid.Column="1" />
+                        <views:FileView Grid.Row="1" Grid.ColumnSpan="2" />
+                    </Grid>
+                </DataTemplate>
+            </TabControl.ContentTemplate>
+        </TabControl>
+    </DockPanel>
+</Window>

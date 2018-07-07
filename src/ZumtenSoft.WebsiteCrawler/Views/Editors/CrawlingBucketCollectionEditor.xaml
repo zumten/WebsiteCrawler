@@ -1,0 +1,102 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:resources="clr-namespace:ZumtenSoft.WebsiteCrawler.Resources"
+             xmlns:models="clr-namespace:ZumtenSoft.WebsiteCrawler.Models"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
+             xmlns:controls="clr-namespace:ZumtenSoft.WebsiteCrawler.Controls"
+             x:Class="ZumtenSoft.WebsiteCrawler.Views.Editors.CrawlingBucketCollectionEditor"
+             mc:Ignorable="d" d:DesignHeight="200" d:DesignWidth="600"
+             d:DataContext="{x:Static models:DesignTimeModels.CrawlingConfig}">
+    <UserControl.Resources>
+
+        <col:ArrayList x:Key="lstNbThreads">
+            <system:Int32>1</system:Int32>
+            <system:Int32>2</system:Int32>
+            <system:Int32>3</system:Int32>
+            <system:Int32>4</system:Int32>
+            <system:Int32>5</system:Int32>
+        </col:ArrayList>
+
+        <col:ArrayList x:Key="lstNbRetry">
+            <system:Int32>0</system:Int32>
+            <system:Int32>1</system:Int32>
+            <system:Int32>2</system:Int32>
+            <system:Int32>3</system:Int32>
+            <system:Int32>4</system:Int32>
+            <system:Int32>5</system:Int32>
+        </col:ArrayList>
+    </UserControl.Resources>
+    <Grid>  
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid ItemsSource="{Binding Path=Buckets}" HorizontalGridLinesBrush="LightGray" VerticalGridLinesBrush="LightGray" Grid.ColumnSpan="2" AutoGenerateColumns="False" RowHeight="25" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Actions" Width="85">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <controls:ImageButton x:Name="btnMoveUp" Image="{x:Static resources:BitmapIcons.MoveUp}" Width="20" Height="20" ToolTip="Move up" Click="BtnMoveUp_Click" />
+                                <controls:ImageButton x:Name="btnMoveDown" Image="{x:Static resources:BitmapIcons.MoveDown}" Width="20" Height="20" ToolTip="Move down" Click="BtnMoveDown_Click" />
+                                <controls:ImageButton Image="{x:Static resources:BitmapIcons.Edit}" Width="20" Height="20" ToolTip="Edit" Click="BtnEdit_Click" />
+                                <controls:ImageButton Image="{x:Static resources:BitmapIcons.Delete}" Width="20" Height="20" ToolTip="Delete" Click="BtnDelete_Click" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>                
+                <DataGridTemplateColumn Header="Name" Width="150">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=Name}" VerticalAlignment="Center" Margin="2"  />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Path=Name, Mode=TwoWay}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Number of workers" Width="125">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=NbThreads}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="2" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <ComboBox SelectedValue="{Binding Path=NbThreads, Mode=TwoWay}" ItemsSource="{Binding Source={StaticResource lstNbThreads}}" HorizontalContentAlignment="Right" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Number retry" Width="125">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=NbRetry}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="2" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <ComboBox SelectedValue="{Binding Path=NbRetry, Mode=TwoWay}" ItemsSource="{Binding Source={StaticResource lstNbRetry}}" HorizontalContentAlignment="Right" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+       
+        <Button Grid.Row="1" Margin="3" Click="BtnAdd_Click">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="{x:Static resources:BitmapIcons.Add}" Height="16"></Image>
+                <TextBlock Text="Add" Height="16" Margin="3,0"></TextBlock>
+            </StackPanel>
+        </Button>
+    </Grid>
+</UserControl>

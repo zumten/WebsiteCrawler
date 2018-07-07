@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B7F841CA-2724-470C-9E72-1214136E1A7D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ZumtenSoft.WebsiteCrawler.BusLayer</RootNamespace>
+    <AssemblyName>ZumtenSoft.WebsiteCrawler.BusLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EPPlus, Version=4.5.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.1\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.7.2.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.7.2\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="ZumtenSoft.Linq2ObsCollection, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZumtenSoft.Linq2ObsCollection.1.0.1\lib\net46\ZumtenSoft.Linq2ObsCollection.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Crawling\Extraction\Behaviors\BehaviorRuleCollection.cs" />
+    <Compile Include="Crawling\Extraction\Behaviors\IBehaviorRule.cs" />
+    <Compile Include="Crawling\Extraction\Behaviors\ResourceBehavior.cs" />
+    <Compile Include="Crawling\Processing\BucketContext.cs" />
+    <Compile Include="Models\Configuration\CrawlingBucket.cs" />
+    <Compile Include="Models\Configuration\CrawlingCondition.cs" />
+    <Compile Include="Models\Configuration\CrawlingConditionComparisonType.cs" />
+    <Compile Include="Models\Configuration\CrawlingConditionFieldType.cs" />
+    <Compile Include="Models\Configuration\CrawlingConfigurationSerializer.cs" />
+    <Compile Include="Models\Configuration\CrawlingRule.cs" />
+    <Compile Include="Models\Configuration\CrawlingConfig.cs" />
+    <Compile Include="Models\Configuration\CrawlingStartingUrl.cs" />
+    <Compile Include="Models\Configuration\ReportConfig.cs" />
+    <Compile Include="Models\Configuration\ReportConfigSerializer.cs" />
+    <Compile Include="Models\CrawlingContext.cs" />
+    <Compile Include="Models\Resources\ResourceContent.cs" />
+    <Compile Include="Models\Resources\ResourceContentType.cs" />
+    <Compile Include="Models\Resources\ResourceError.cs" />
+    <Compile Include="Models\Resources\ResourceHeaders.cs" />
+    <Compile Include="Models\Resources\ResourceReferenceTypes.cs" />
+    <Compile Include="Models\Resources\ResourceStatus.cs" />
+    <Compile Include="Reporting\ReportSerializer.cs" />
+    <Compile Include="Reporting\ResourceCsvMetasReportGenerator.cs" />
+    <Compile Include="Reporting\ReportGenerator.cs" />
+    <Compile Include="Utils\CompressionHelper.cs" />
+    <Compile Include="Utils\ConfigurationHelper.cs" />
+    <Compile Include="Crawling\Networking\HostProvider.cs" />
+    <Compile Include="Crawling\Networking\SocketReference.cs" />
+    <Compile Include="Reporting\ResourceByStatusXmlReportGenerator.cs" />
+    <Compile Include="Models\Resources\ResourceReference.cs" />
+    <Compile Include="Crawling\Extraction\Behaviors\UrlFilterBehaviorRule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reporting\ResourceCsvReportGenerator.cs" />
+    <Compile Include="Utils\DictionaryHelper.cs" />
+    <Compile Include="Utils\EnumHelper.cs" />
+    <Compile Include="Utils\IOHelper.cs" />
+    <Compile Include="Crawling\Networking\IHttpResponse.cs" />
+    <Compile Include="Crawling\Networking\SocketFactory.cs" />
+    <Compile Include="Crawling\Networking\SocketHelper.cs" />
+    <Compile Include="Crawling\Networking\SocketHttpDataProvider.cs" />
+    <Compile Include="Crawling\Networking\SocketProxy.cs" />
+    <Compile Include="Utils\NumberHelper.cs" />
+    <Compile Include="Reporting\ResourcesSerializer.cs" />
+    <Compile Include="Crawling\Processing\WorkBucket.cs" />
+    <Compile Include="Crawling\Processing\WorkDispatcher.cs" />
+    <Compile Include="Crawling\Processing\Worker.cs" />
+    <Compile Include="Crawling\Processing\WorkerStatus.cs" />
+    <Compile Include="Utils\UriHelper.cs" />
+    <Compile Include="Crawling\Extraction\UrlExtractors.cs" />
+    <Compile Include="Models\Resources\Resource.cs" />
+    <Compile Include="Crawling\Networking\WebRequestHelper.cs" />
+    <Compile Include="Crawling\Extraction\Crawler.cs" />
+    <Compile Include="Utils\UrlRepeater.cs" />
+    <Compile Include="Utils\XmlUtils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ZumtenSoft.WebsiteCrawler.Utils\ZumtenSoft.WebsiteCrawler.Utils.csproj">
+      <Project>{A1EEF449-D880-43C1-A0B0-F2A2DBA76F11}</Project>
+      <Name>ZumtenSoft.WebsiteCrawler.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

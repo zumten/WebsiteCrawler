@@ -1,0 +1,63 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:models="clr-namespace:ZumtenSoft.WebsiteCrawler.Models"
+        xmlns:editors="clr-namespace:ZumtenSoft.WebsiteCrawler.Views.Editors"
+        x:Class="ZumtenSoft.WebsiteCrawler.Views.Editors.CrawlingConfigEditor"
+        mc:Ignorable="d" d:DataContext="{x:Static models:DesignTimeModels.CrawlingConfig}"
+        DataContext="{Binding Path=Model, RelativeSource={RelativeSource Self}}"
+        Title="{Binding Path=Name, StringFormat='{}Editing configuration: {0}'}"
+        Height="315" Width="572" ShowInTaskbar="False" x:Name="Window">
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Height="32">
+            <Button Margin="3" Click="OK_Click" Width="100" IsDefault="True">OK</Button>
+            <Button Margin="3" Click="Cancel_Click" Width="100" IsCancel="True">Cancel</Button>
+        </StackPanel>
+        
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="28" />
+                <RowDefinition Height="28" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            
+            <TextBlock Text="Name: " TextAlignment="Right" VerticalAlignment="Center" Margin="3"></TextBlock>
+            <TextBox Grid.Column="2" Text="{Binding Path=Name, Mode=TwoWay}" Margin="3"></TextBox>
+
+            <TextBlock Text="Description: " Grid.Row="1" TextAlignment="Right" VerticalAlignment="Center" Margin="3"></TextBlock>
+            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=Description, Mode=TwoWay}" Margin="3"></TextBox>
+            
+            <TabControl Grid.Row="2" Grid.ColumnSpan="2">
+                <TabItem Header="Buckets">
+                    <TabItem.ContentTemplate>
+                        <DataTemplate>
+                            <editors:CrawlingBucketCollectionEditor DataContext="{Binding ElementName=Window, Path=DataContext}" />
+                        </DataTemplate>
+                    </TabItem.ContentTemplate>
+                </TabItem>
+                <TabItem Header="Filtering rules">
+                    <TabItem.ContentTemplate>
+                        <DataTemplate>
+                            <editors:CrawlingRuleCollectionEditor DataContext="{Binding ElementName=Window, Path=DataContext}" />
+                        </DataTemplate>
+                    </TabItem.ContentTemplate>
+                </TabItem>
+                <TabItem Header="Starting URLs">
+                    <TabItem.ContentTemplate>
+                        <DataTemplate>
+                            <editors:CrawlingStartingUrlCollectionEditor DataContext="{Binding ElementName=Window, Path=DataContext}" />
+                        </DataTemplate>
+                    </TabItem.ContentTemplate>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </DockPanel>
+
+
+
+</Window>

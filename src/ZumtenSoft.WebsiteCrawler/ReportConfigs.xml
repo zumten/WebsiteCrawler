@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ReportConfigs>
+  <ReportConfig Guid="c9097fbe-2fba-49fb-8c6a-6ea3c599f9c3" Name="Resources" Description="List of http requests made" Type="ListResources">
+    <Columns>
+      <Column Name="Starting time" Path="Resource.Request.TimeStart" Width="19" />
+      <Column Name="Content type" Path="Resource.Response.ContentType" Width="11" />
+      <Column Name="Status code" Path="Resource.Status" Width="11" />
+      <Column Name="URL" Path="Resource.Request.Url.AbsoluteUri" Width="11" />
+      <Column Name="Loading time" Path="Resource.Response.TimeLoading" Width="11" />
+      <Column Name="Mime type" Path="Resource.Response.Headers.ContentType" Width="11" />
+      <Column Name="Compression" Path="Resource.Response.Headers.ContentEncoding" Width="11" />
+      <Column Name="Size (bytes)" Path="Resource.Response.Size" Width="11" />
+      <Column Name="CompressedSize (bytes)" Path="Resource.Response.CompressedSize" Width="11" />
+      <Column Name="ViewStateSize (bytes)" Path="Resource.Response.ViewStateSize" Width="11" />
+    </Columns>
+  </ReportConfig>
+  <ReportConfig Guid="35abd401-8488-4e1a-9d57-88cc937edc5f" Name="Caching" Description="Caching informations for all the http requests" Type="ListResources">
+    <Columns>
+      <Column Name="Content type" Path="Resource.Response.ContentType" Width="11" />
+      <Column Name="URL" Path="Resource.Request.Url.AbsoluteUri" Width="85" />
+      <Column Name="Cache control" Path="Resource.Response.Headers.CacheControl" Width="13" />
+      <Column Name="Has ETAG" Path="Resource.Response.Headers.HasETAG" Width="10" />
+      <Column Name="Last modified" Path="Resource.Response.Headers.LastModified" Width="20" />
+      <Column Name="Expires" Path="Resource.Response.Headers.Expires" Width="20" />
+    </Columns>
+  </ReportConfig>
+  <ReportConfig Guid="7b4c2925-bf5b-4b89-9f11-d2e3964d6b3c" Name="ReferenceSummary" Description="Count of the references" Type="ListResources">
+    <Columns>
+      <Column Name="Content type" Path="Resource.Response.ContentType" Width="11" />
+      <Column Name="Status code" Path="Resource.Status" Width="11" />
+      <Column Name="URL" Path="Resource.Request.Url.AbsoluteUri" Width="85" />
+      <Column Name="# images" Path="Resource.References.Images.Count" Width="12" />
+      <Column Name="# scripts" Path="Resource.References.Scripts.Count" Width="12" />
+      <Column Name="# css" Path="Resource.References.Links.Stylesheets.Count" Width="12" />
+      <Column Name="# hyperlinks" Path="Resource.References.Anchors.Count" Width="12" />
+      <Column Name="# referers" Path="Resource.Referers.Count" Width="12" />
+    </Columns>
+  </ReportConfig>
+  <ReportConfig Guid="3403daa1-be3c-4343-b5ab-07336b61261a" Name="References" Description="" Type="ListReferences">
+    <Columns>
+      <Column Name="Source content type" Path="Resource.Response.ContentType" Width="11" />
+      <Column Name="Source URL" Path="Resource.Request.Url.AbsoluteUri" Width="70" />
+      <Column Name="Reference type" Path="Reference.Type" Width="11" />
+      <Column Name="Sub type" Path="Reference.SubType" Width="11" />
+      <Column Name="Raw value" Path="Reference.RawUrl" Width="50" />
+      <Column Name="Target URL" Path="Reference.Target.Request.Url.AbsoluteUri" Width="50" />
+      <Column Name="Target Status" Path="Reference.Target.Response.HttpStatus" Width="15" />
+      <Column Name="Final status" Path="Reference.Target.Redirections.Final.Response.HttpStatus" Width="15" />
+      <Column Name="Is recursive" Path="Reference.IsRecursive" Width="15" />
+      <Column Name="Count" Path="Reference.Count" Width="10" />
+    </Columns>
+  </ReportConfig>
+</ReportConfigs>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CrawlingConfigs>
+  <CrawlingConfig Guid="3cc1f8cf-4d75-4c27-bf5e-898ee515f6ab" Name="Alexa" Description="">
+    <Buckets>
+      <Bucket Guid="6459a3be-4f31-4f0e-8f38-17658ea108cf" Name="Bucket Alexa" Description="" NbThreads="1" NbRetry="2" LimitRequests="0">
+        <HostMappings />
+      </Bucket>
+      <Bucket Guid="14caa2cf-7c18-43ff-8170-ae460c42a07e" Name="Bucket Others" Description="" NbThreads="1" NbRetry="2" LimitRequests="0">
+        <HostMappings />
+      </Bucket>
+    </Buckets>
+    <Rules>
+      <Rule Guid="a2be9b7e-c5ad-4a43-b3ae-c0d4e92c583f" Name="Crawl Alexa" Description="" Behavior="FollowAllReferences" TargetBucket="6459a3be-4f31-4f0e-8f38-17658ea108cf">
+        <Conditions>
+          <Condition Guid="56b71830-62d6-44bc-9047-ee219855cdea" FieldType="Host" ComparisonType="Equals" Value="www.alexa.com" />
+        </Conditions>
+      </Rule>
+      <Rule Guid="42adcd7a-4429-4ec0-bd4c-46121f3c2eb1" Name="Crawl Others" Description="" Behavior="DownloadAndStop" TargetBucket="14caa2cf-7c18-43ff-8170-ae460c42a07e">
+        <Conditions />
+      </Rule>
+    </Rules>
+    <StartingUrls>
+      <StartingUrl Guid="ab801765-001b-4246-832f-5d57ab905d8f" Name="New URL" Value="https://www.alexa.com/topsites" />
+    </StartingUrls>
+  </CrawlingConfig>
+</CrawlingConfigs>
